@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sites',
+
     'symposion.conference',
     'symposion.proposals',
     'symposion.reviews',
@@ -133,3 +135,5 @@ STATIC_URL = '/static/'
 # hardcode urls for login and login redirect
 LOGIN_URL = '/accounts/login/'
 # LOGIN_REDIRECT_URL = '/dashboard/'
+
+SITE_ID = 1

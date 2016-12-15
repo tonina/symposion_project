@@ -23,6 +23,7 @@ from views import dashboard
 urlpatterns = [
     url(r'^conference/', include('symposion.conference.urls')),
     url(r'^speakers/', include('symposion.speakers.urls')),
+    url(r'^schedule/', include('symposion.schedule.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^dashboard/', dashboard, name='dashboard'),
     url(r'^admin/', admin.site.urls),

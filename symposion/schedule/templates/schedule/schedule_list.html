@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} - Schedule List{% endblock %}
+
+{% block content %}
+    <p></p>
+    <h3>Shedule</h3>
+    {% if schedule %}
+        {{ schedule }}
+    {% endif %}
+
+    <p></p>
+    <h3>Presentations</h3>
+    {% if presentations %}
+        {% for presentation in presentations %}
+            {{ presentation }}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
