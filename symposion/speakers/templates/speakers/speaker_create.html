@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}- Speaker creation{% endblock %}
+
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ speaker_form.as_ul }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

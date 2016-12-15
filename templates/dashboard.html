@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p></p>
+
+    <h3>Speakers</h3>
+    <a href="{% url 'speaker_create' %}">Create Speaker</a>
+    <p></p>
+    <a href="{% url 'speaker_edit' %}">Edit Speaker</a>
+
+
+{% endblock %}

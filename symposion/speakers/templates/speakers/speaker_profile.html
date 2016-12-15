@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}- {{ speaker.name }}{% endblock %}
+
+{% block content %}
+
+{{ speaker }}
+<p></p>
+{% if presentations %}
+    {% for presentation in presentations %}
+        <li>{{ presentation }}</li>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

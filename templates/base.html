@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conference Management {% block title %} {% endblock %}</title>
+</head>
+<body>
+
+<div>
+    <div id="user">
+
+        {% if user.is_authenticated %}
+            <snap><a href="{% url 'profile' %}">{{ user.username }}</a> </snap>
+            <snap><a href="{% url 'logout' %}">Logout</a> </snap>
+        {% else %}
+            <snap><a href="{% url 'account_login' %}?next={{ request.path }}">Sign In</a> </snap>
+            <snap><a href="{% url 'create_user' %}">Sign Up</a> </snap>
+        {% endif %}
+
+    </div>
+</div>
+
+<p></p>
+
+<div>
+    <snap><a href="{% url 'dashboard' %}">Dashboard</a> </snap>
+</div>
+
+<div>
+    {% block content %}Conference Management{% endblock %}
+</div>
+
+</body>
+</html>

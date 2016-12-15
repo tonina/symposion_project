@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>
+    <a href="{% url 'prof_edit' %}">Edit Profile</a>
+    </p>
+    <p></p>
+    <table>
+    <tr>
+        <td>Ім'я:</td>
+        <td>{{ user.username }}</td>
+    </tr>
+    <tr>
+        <td>E-mail:</td>
+        <td>{{ user.email }}</td>
+    </tr>
+    <tr>
+        <td>Адреса:</td>
+        <td>{{ user.get_profile.address }}</td>
+    </tr>
+    </table>
+
+{% endblock %}
