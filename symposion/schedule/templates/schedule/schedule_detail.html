@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} - Schedule Detail {% endblock %}
+
+{% block content %}
+
+    <p></p>
+    {% if schedule %}
+        {{ schedule.section }}
+        <a href="{% url 'schedule_edit' schedule.section.slug %}">
+            Shedule Edit
+        </a>
+    {% endif %}
+
+    {% if days %}
+        {% for day in days %}
+            {{ day }}
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

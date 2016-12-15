@@ -4,9 +4,11 @@
 
 {% block content %}
     <p></p>
-    <h3>Shedule</h3>
+    <h3>Shedule Section</h3>
     {% if schedule %}
-        {{ schedule }}
+        <a href="{% url 'schedule_detail' schedule.section.slug %}">
+            {{ schedule.section }}
+        </a>
     {% endif %}
 
     <p></p>
