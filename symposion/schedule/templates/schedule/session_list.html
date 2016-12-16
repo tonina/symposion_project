@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} - Session List {% endblock %}
+
+{% block content %}
+
+    {% if sessions %}
+        {% for session in sessions %}
+            {{ session }}
+            <p>Session Day</p>
+            {{ session.day }}
+            <p>Session Slots</p>
+            {{ session.slots }}
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

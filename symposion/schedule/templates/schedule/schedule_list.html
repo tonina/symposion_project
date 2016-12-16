@@ -15,6 +15,7 @@
     <h3>Presentations</h3>
     {% if presentations %}
         {% for presentation in presentations %}
+            <br>
             {{ presentation }}
             <a href="{% url 'schedule_presentation_detail' presentation.pk %}">
                 {{ presentation }}

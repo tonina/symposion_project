@@ -20,7 +20,10 @@
     <a href="{% url 'speaker_edit' %}">Edit Speaker</a>
 
     <h3>Conference Shedule</h3>
-    <a href="{% url 'schedule_list' %}">Schedule List</a>
-
+    <a href="{% url 'schedule_list' %}">Schedule and Presentation List</a>
+    <p></p>
+    {% comment %}
+    <a href="{% url 'schedule_session_list' %}">Session List</a>
+    {% endcomment %}
 
 {% endblock %}
