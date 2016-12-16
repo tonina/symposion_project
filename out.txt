@@ -1,0 +1,308 @@
+
+
+symposion_conference
+
+<class 'symposion.conference.models.Conference'>
+<ManyToOneRel: symposion_conference.section>
+<ManyToOneRel: symposion_sponsorship.sponsorlevel>
+symposion_conference.Conference.id
+symposion_conference.Conference.title
+symposion_conference.Conference.start_date
+symposion_conference.Conference.end_date
+symposion_conference.Conference.timezone
+
+<class 'symposion.conference.models.Section'>
+<OneToOneRel: symposion_proposals.proposalsection>
+<ManyToOneRel: symposion_proposals.proposalkind>
+<OneToOneRel: symposion_schedule.schedule>
+<ManyToOneRel: symposion_schedule.presentation>
+symposion_conference.Section.id
+symposion_conference.Section.conference
+symposion_conference.Section.name
+symposion_conference.Section.slug
+symposion_conference.Section.start_date
+symposion_conference.Section.end_date
+
+symposion_proposals
+
+<class 'symposion.proposals.models.ProposalSection'>
+symposion_proposals.ProposalSection.id
+symposion_proposals.ProposalSection.section
+symposion_proposals.ProposalSection.start
+symposion_proposals.ProposalSection.end
+symposion_proposals.ProposalSection.closed
+symposion_proposals.ProposalSection.published
+
+<class 'symposion.proposals.models.ProposalKind'>
+<ManyToOneRel: symposion_proposals.proposalbase>
+symposion_proposals.ProposalKind.id
+symposion_proposals.ProposalKind.section
+symposion_proposals.ProposalKind.name
+symposion_proposals.ProposalKind.slug
+
+<class 'symposion.proposals.models.ProposalBase'>
+<ManyToOneRel: symposion_proposals.additionalspeaker>
+<ManyToOneRel: symposion_proposals.supportingdocument>
+<ManyToOneRel: symposion_reviews.reviewassignment>
+<ManyToOneRel: symposion_reviews.proposalmessage>
+<ManyToOneRel: symposion_reviews.review>
+<ManyToOneRel: symposion_reviews.latestvote>
+<OneToOneRel: symposion_reviews.proposalresult>
+<ManyToOneRel: symposion_reviews.comment>
+<ManyToOneRel: symposion_reviews.resultnotification>
+<OneToOneRel: symposion_schedule.presentation>
+symposion_proposals.ProposalBase.id
+symposion_proposals.ProposalBase.kind
+symposion_proposals.ProposalBase.title
+symposion_proposals.ProposalBase.description
+symposion_proposals.ProposalBase.abstract
+symposion_proposals.ProposalBase.abstract_html
+symposion_proposals.ProposalBase.additional_notes
+symposion_proposals.ProposalBase.additional_notes_html
+symposion_proposals.ProposalBase.submitted
+symposion_proposals.ProposalBase.speaker
+symposion_proposals.ProposalBase.cancelled
+symposion_proposals.ProposalBase.additional_speakers
+
+<class 'symposion.proposals.models.AdditionalSpeaker'>
+symposion_proposals.AdditionalSpeaker.id
+symposion_proposals.AdditionalSpeaker.speaker
+symposion_proposals.AdditionalSpeaker.proposalbase
+symposion_proposals.AdditionalSpeaker.status
+
+<class 'symposion.proposals.models.SupportingDocument'>
+symposion_proposals.SupportingDocument.id
+symposion_proposals.SupportingDocument.proposal
+symposion_proposals.SupportingDocument.uploaded_by
+symposion_proposals.SupportingDocument.created_at
+symposion_proposals.SupportingDocument.file
+symposion_proposals.SupportingDocument.description
+
+symposion_reviews
+
+<class 'symposion.reviews.models.ReviewAssignment'>
+symposion_reviews.ReviewAssignment.id
+symposion_reviews.ReviewAssignment.proposal
+symposion_reviews.ReviewAssignment.user
+symposion_reviews.ReviewAssignment.origin
+symposion_reviews.ReviewAssignment.assigned_at
+symposion_reviews.ReviewAssignment.opted_out
+
+<class 'symposion.reviews.models.ProposalMessage'>
+symposion_reviews.ProposalMessage.id
+symposion_reviews.ProposalMessage.proposal
+symposion_reviews.ProposalMessage.user
+symposion_reviews.ProposalMessage.message
+symposion_reviews.ProposalMessage.message_html
+symposion_reviews.ProposalMessage.submitted_at
+
+<class 'symposion.reviews.models.Review'>
+symposion_reviews.Review.id
+symposion_reviews.Review.proposal
+symposion_reviews.Review.user
+symposion_reviews.Review.vote
+symposion_reviews.Review.comment
+symposion_reviews.Review.comment_html
+symposion_reviews.Review.submitted_at
+
+<class 'symposion.reviews.models.LatestVote'>
+symposion_reviews.LatestVote.id
+symposion_reviews.LatestVote.proposal
+symposion_reviews.LatestVote.user
+symposion_reviews.LatestVote.vote
+symposion_reviews.LatestVote.submitted_at
+
+<class 'symposion.reviews.models.ProposalResult'>
+symposion_reviews.ProposalResult.id
+symposion_reviews.ProposalResult.proposal
+symposion_reviews.ProposalResult.score
+symposion_reviews.ProposalResult.comment_count
+symposion_reviews.ProposalResult.vote_count
+symposion_reviews.ProposalResult.plus_one
+symposion_reviews.ProposalResult.plus_zero
+symposion_reviews.ProposalResult.minus_zero
+symposion_reviews.ProposalResult.minus_one
+symposion_reviews.ProposalResult.accepted
+symposion_reviews.ProposalResult.status
+
+<class 'symposion.reviews.models.Comment'>
+symposion_reviews.Comment.id
+symposion_reviews.Comment.proposal
+symposion_reviews.Comment.commenter
+symposion_reviews.Comment.text
+symposion_reviews.Comment.text_html
+symposion_reviews.Comment.public
+symposion_reviews.Comment.commented_at
+
+<class 'symposion.reviews.models.NotificationTemplate'>
+<ManyToOneRel: symposion_reviews.resultnotification>
+symposion_reviews.NotificationTemplate.id
+symposion_reviews.NotificationTemplate.label
+symposion_reviews.NotificationTemplate.from_address
+symposion_reviews.NotificationTemplate.subject
+symposion_reviews.NotificationTemplate.body
+
+<class 'symposion.reviews.models.ResultNotification'>
+symposion_reviews.ResultNotification.id
+symposion_reviews.ResultNotification.proposal
+symposion_reviews.ResultNotification.template
+symposion_reviews.ResultNotification.timestamp
+symposion_reviews.ResultNotification.to_address
+symposion_reviews.ResultNotification.from_address
+symposion_reviews.ResultNotification.subject
+symposion_reviews.ResultNotification.body
+
+symposion_schedule
+
+<class 'symposion.schedule.models.Schedule'>
+<ManyToOneRel: symposion_schedule.day>
+<ManyToOneRel: symposion_schedule.room>
+<ManyToOneRel: symposion_schedule.slotkind>
+symposion_schedule.Schedule.id
+symposion_schedule.Schedule.section
+symposion_schedule.Schedule.published
+symposion_schedule.Schedule.hidden
+
+<class 'symposion.schedule.models.Day'>
+<ManyToOneRel: symposion_schedule.slot>
+<ManyToOneRel: symposion_schedule.session>
+symposion_schedule.Day.id
+symposion_schedule.Day.schedule
+symposion_schedule.Day.date
+
+<class 'symposion.schedule.models.Room'>
+<ManyToOneRel: symposion_schedule.slotroom>
+symposion_schedule.Room.id
+symposion_schedule.Room.schedule
+symposion_schedule.Room.name
+symposion_schedule.Room.order
+
+<class 'symposion.schedule.models.SlotKind'>
+<ManyToOneRel: symposion_schedule.slot>
+symposion_schedule.SlotKind.id
+symposion_schedule.SlotKind.schedule
+symposion_schedule.SlotKind.label
+
+<class 'symposion.schedule.models.Slot'>
+<ManyToOneRel: symposion_schedule.slotroom>
+<OneToOneRel: symposion_schedule.presentation>
+<ManyToManyRel: symposion_schedule.session>
+symposion_schedule.Slot.id
+symposion_schedule.Slot.name
+symposion_schedule.Slot.day
+symposion_schedule.Slot.kind
+symposion_schedule.Slot.start
+symposion_schedule.Slot.end
+symposion_schedule.Slot.content_override
+symposion_schedule.Slot.content_override_html
+
+<class 'symposion.schedule.models.SlotRoom'>
+symposion_schedule.SlotRoom.id
+symposion_schedule.SlotRoom.slot
+symposion_schedule.SlotRoom.room
+
+<class 'symposion.schedule.models.Presentation'>
+symposion_schedule.Presentation.id
+symposion_schedule.Presentation.slot
+symposion_schedule.Presentation.title
+symposion_schedule.Presentation.description
+symposion_schedule.Presentation.description_html
+symposion_schedule.Presentation.abstract
+symposion_schedule.Presentation.abstract_html
+symposion_schedule.Presentation.speaker
+symposion_schedule.Presentation.cancelled
+symposion_schedule.Presentation.proposal_base
+symposion_schedule.Presentation.section
+symposion_schedule.Presentation.additional_speakers
+
+<class 'symposion.schedule.models.Session'>
+<ManyToOneRel: symposion_schedule.sessionrole>
+symposion_schedule.Session.id
+symposion_schedule.Session.day
+symposion_schedule.Session.slots
+
+<class 'symposion.schedule.models.SessionRole'>
+symposion_schedule.SessionRole.id
+symposion_schedule.SessionRole.session
+symposion_schedule.SessionRole.user
+symposion_schedule.SessionRole.role
+symposion_schedule.SessionRole.status
+symposion_schedule.SessionRole.submitted
+
+symposion_speakers
+
+<class 'symposion.speakers.models.Speaker'>
+<ManyToOneRel: symposion_proposals.proposalbase>
+<ManyToManyRel: symposion_proposals.proposalbase>
+<ManyToOneRel: symposion_proposals.additionalspeaker>
+<ManyToOneRel: symposion_schedule.presentation>
+<ManyToManyRel: symposion_schedule.presentation>
+symposion_speakers.Speaker.id
+symposion_speakers.Speaker.user
+symposion_speakers.Speaker.name
+symposion_speakers.Speaker.biography
+symposion_speakers.Speaker.biography_html
+symposion_speakers.Speaker.photo
+symposion_speakers.Speaker.twitter_username
+symposion_speakers.Speaker.annotation
+symposion_speakers.Speaker.invite_email
+symposion_speakers.Speaker.invite_token
+symposion_speakers.Speaker.created
+
+symposion_sponsorship
+
+<class 'symposion.sponsorship.models.SponsorLevel'>
+<ManyToOneRel: symposion_sponsorship.sponsor>
+<ManyToOneRel: symposion_sponsorship.benefitlevel>
+symposion_sponsorship.SponsorLevel.id
+symposion_sponsorship.SponsorLevel.conference
+symposion_sponsorship.SponsorLevel.name
+symposion_sponsorship.SponsorLevel.order
+symposion_sponsorship.SponsorLevel.cost
+symposion_sponsorship.SponsorLevel.description
+
+<class 'symposion.sponsorship.models.Sponsor'>
+<ManyToOneRel: symposion_sponsorship.sponsorbenefit>
+symposion_sponsorship.Sponsor.id
+symposion_sponsorship.Sponsor.applicant
+symposion_sponsorship.Sponsor.name
+symposion_sponsorship.Sponsor.display_url
+symposion_sponsorship.Sponsor.external_url
+symposion_sponsorship.Sponsor.annotation
+symposion_sponsorship.Sponsor.contact_name
+symposion_sponsorship.Sponsor.contact_email
+symposion_sponsorship.Sponsor.level
+symposion_sponsorship.Sponsor.added
+symposion_sponsorship.Sponsor.active
+symposion_sponsorship.Sponsor.sponsor_logo
+symposion_sponsorship.Sponsor.web_logo_benefit
+symposion_sponsorship.Sponsor.print_logo_benefit
+symposion_sponsorship.Sponsor.print_description_benefit
+symposion_sponsorship.Sponsor.company_description_benefit
+
+<class 'symposion.sponsorship.models.Benefit'>
+<ManyToOneRel: symposion_sponsorship.benefitlevel>
+<ManyToOneRel: symposion_sponsorship.sponsorbenefit>
+symposion_sponsorship.Benefit.id
+symposion_sponsorship.Benefit.name
+symposion_sponsorship.Benefit.description
+symposion_sponsorship.Benefit.type
+symposion_sponsorship.Benefit.content_type
+
+<class 'symposion.sponsorship.models.BenefitLevel'>
+symposion_sponsorship.BenefitLevel.id
+symposion_sponsorship.BenefitLevel.benefit
+symposion_sponsorship.BenefitLevel.level
+symposion_sponsorship.BenefitLevel.max_words
+symposion_sponsorship.BenefitLevel.other_limits
+
+<class 'symposion.sponsorship.models.SponsorBenefit'>
+symposion_sponsorship.SponsorBenefit.id
+symposion_sponsorship.SponsorBenefit.sponsor
+symposion_sponsorship.SponsorBenefit.benefit
+symposion_sponsorship.SponsorBenefit.active
+symposion_sponsorship.SponsorBenefit.max_words
+symposion_sponsorship.SponsorBenefit.other_limits
+symposion_sponsorship.SponsorBenefit.text
+symposion_sponsorship.SponsorBenefit.upload
+symposion_sponsorship.SponsorBenefit.is_complete

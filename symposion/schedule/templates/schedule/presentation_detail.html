@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} - Presentation Details{% endblock %}
+
+{% block content %}
+
+    {% if presentation %}
+        <p>Title</p>
+        {{ presentation.title }}
+        <p>Speaker</p>
+        {{ presentation.speaker }}
+        <p>Number</p>
+        {{ presentation.number }}
+        <p>Abstract</p>
+        {{ presentation.abstract }}
+        <p>Description</p>
+        {{ presentation.description }}
+        <p>Proposal</p>
+        {{ presentation.proposal_base }}
+        <p>Section</p>
+        {{ presentation.section }}
+    {% endif %}
+
+    <h3>Schedule</h3>
+    {% if schedule %}
+        {{ schedule }}
+    {% endif %}
+
+{% endblock %}

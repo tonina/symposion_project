@@ -16,6 +16,9 @@
     {% if presentations %}
         {% for presentation in presentations %}
             {{ presentation }}
+            <a href="{% url 'schedule_presentation_detail' presentation.pk %}">
+                {{ presentation }}
+            </a>
         {% endfor %}
     {% endif %}
 {% endblock %}

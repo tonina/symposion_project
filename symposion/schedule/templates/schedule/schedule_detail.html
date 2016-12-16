@@ -7,6 +7,7 @@
     <p></p>
     {% if schedule %}
         {{ schedule.section }}
+        <p></p>
         <a href="{% url 'schedule_edit' schedule.section.slug %}">
             Shedule Edit
         </a>
