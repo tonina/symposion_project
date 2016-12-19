@@ -5,10 +5,13 @@
 {% block content %}
     <p></p>
     <h3>Shedule Section</h3>
-    {% if schedule %}
-        <a href="{% url 'schedule_detail' schedule.section.slug %}">
-            {{ schedule.section }}
-        </a>
+    {% if schedules %}
+        {% for schedule in schedules %}
+            <br>
+            <a href="{% url 'schedule_detail' schedule.section.slug %}">
+                {{ schedule }}
+            </a>
+        {% endfor %}
     {% endif %}
 
     <p></p>
@@ -16,7 +19,6 @@
     {% if presentations %}
         {% for presentation in presentations %}
             <br>
-            {{ presentation }}
             <a href="{% url 'schedule_presentation_detail' presentation.pk %}">
                 {{ presentation }}
             </a>

@@ -71,15 +71,20 @@ def schedule_detail(request, slug=None):
 
 
 def schedule_list(request, slug=None):
-    schedule = fetch_schedule(slug)
-    if not schedule.published and not request.user.is_staff:
-        raise Http404()
+    # schedule = fetch_schedule(slug)
+    # if not schedule.published and not request.user.is_staff:
+    #     raise Http404()
+    schedules = Schedule.objects.all().order_by('pk')
 
-    presentations = Presentation.objects.filter(section=schedule.section)
+    presentations = Presentation.objects.none()
+
+    for schedule in schedules:
+        presentations = presentations | Presentation.objects.filter(section=schedule.section)
+
     presentations = presentations.exclude(cancelled=True)
 
     ctx = {
-        "schedule": schedule,
+        "schedules": schedules,
         "presentations": presentations,
     }
     return render(request, "schedule/schedule_list.html", ctx)
