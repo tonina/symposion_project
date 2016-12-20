@@ -14,6 +14,7 @@ from django.views import static
 from django.contrib import messages
 from django.contrib.auth.models import User
 
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from account.decorators import login_required
@@ -40,18 +41,18 @@ def get_form(name):
 
 def proposal_submit(request):
     if not request.user.is_authenticated():
-        messages.info(request, _('''To submit a proposal, please
+        messages.info(request, mark_safe(_('''To submit a proposal, please
                                  <a href="{0}">log in</a> and create a speaker profile
-                                 via the dashboard.'''.format(settings.LOGIN_URL)))
+                                 via the dashboard.'''.format(settings.LOGIN_URL))))
         return redirect("dashboard")  # @@@ unauth'd speaker info page?
     else:
         try:
             request.user.speaker_profile
         except ObjectDoesNotExist:
             url = reverse("speaker_create")
-            messages.info(request, _("To submit a proposal, first "
+            messages.info(request, mark_safe(_("To submit a proposal, first "
                                      "<a href='{0}'>create a speaker "
-                                     "profile</a>.".format(url)))
+                                     "profile</a>.".format(url))))
             return redirect("dashboard")
 
     kinds = []

@@ -143,4 +143,4 @@ SITE_ID = 1
 # settings for django-user-accounts
 ACCOUNT_EMAIL_UNIQUE = True
 # ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True  # highly recommended
-AUTHENTICATION_BACKENDS = ("account.auth_backends.EmailAuthenticationBackend",)
+# AUTHENTICATION_BACKENDS = ("account.auth_backends.EmailAuthenticationBackend",)
