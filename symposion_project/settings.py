@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django.contrib.sites',
+    'account',
 
     'symposion.conference',
     'symposion.proposals',
@@ -136,4 +137,10 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/accounts/login/'
 # LOGIN_REDIRECT_URL = '/dashboard/'
 
+# settings for site becouse of 'django.contrib.sites' is in INSTALLED_APPS
 SITE_ID = 1
+
+# settings for django-user-accounts
+ACCOUNT_EMAIL_UNIQUE = True
+# ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True  # highly recommended
+AUTHENTICATION_BACKENDS = ("account.auth_backends.EmailAuthenticationBackend",)

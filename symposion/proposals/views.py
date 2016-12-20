@@ -40,10 +40,10 @@ def get_form(name):
 
 def proposal_submit(request):
     if not request.user.is_authenticated():
-        messages.info(request, _("To submit a proposal, please "
-                                 "<a href='{0}'>log in</a> and create a speaker profile "
-                                 "via the dashboard.".format(settings.LOGIN_URL)))
-        return redirect("home")  # @@@ unauth'd speaker info page?
+        messages.info(request, _('''To submit a proposal, please
+                                 <a href="{0}">log in</a> and create a speaker profile
+                                 via the dashboard.'''.format(settings.LOGIN_URL)))
+        return redirect("dashboard")  # @@@ unauth'd speaker info page?
     else:
         try:
             request.user.speaker_profile
