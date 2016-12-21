@@ -1,3 +1,12 @@
+<script language="JavaScript">
+    function SubmitForm(pk) {
+        var form = document.sform;
+        form.pk.value = pk;
+        form.submit();
+    }
+</script>
+
+
 {% extends 'base.html' %}
 
 {% block title %} - Proposal Submit {% endblock %}
@@ -7,7 +16,20 @@
     <h3>Proposal Submit</h3>
 
     {% if kinds %}
-        {{ kinds }}
+        {% for kind in kinds %}
+            <br>
+            <a href="{% url 'proposal_detail' kind.pk %}">{{ kind.name }}</a>
+
+            {% comment %}
+            hidden form for post request in link
+            {% endcomment %}
+            <form name="sform" method="post" action="{% url 'proposal_cancel' kind.pk %}">
+                <input type="hidden" name="pk">
+            </form>
+            <a href="javascript:SubmitForm({{ kind.pk }})">Cancel Post</a>
+
+            <a href="{% url 'proposal_cancel' kind.pk %}">Cancel Get</a>
+        {% endfor %}
     {% endif %}
 
 {% endblock %}

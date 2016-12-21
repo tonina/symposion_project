@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} - Proposal Submit Kind{% endblock %}
+
+{% block content %}
+
+    <h3>Proposal Submit Kind</h3>
+    {% if kind %}
+        {{ kind }}
+    {% endif %}
+
+    {% if proposal_form %}
+        {{ proposal_form }}
+    {% endif %}
+
+{% endblock %}

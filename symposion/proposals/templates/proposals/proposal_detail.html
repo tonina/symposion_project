@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} - Proposal Detail{% endblock %}
+
+{% block content %}
+
+    <h4>Proposal Detail</h4>
+    {% if proposal %}
+        <p>Title</p>
+        {{ proposal.title }}
+        <p>Section</p>
+        {{ proposal.section }}
+        <p>Speaker</p>
+        {{ proposal.speaker }}
+        <p>Abstract</p>
+        {{ proposal.abstract }}
+    {% endif %}
+
+{% endblock %}

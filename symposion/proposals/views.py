@@ -70,7 +70,7 @@ def proposal_submit_kind(request, kind_slug):
     kind = get_object_or_404(ProposalKind, slug=kind_slug)
 
     if not request.user.is_authenticated():
-        return redirect("home")  # @@@ unauth'd speaker info page?
+        return redirect("dashboard")  # @@@ unauth'd speaker info page?
     else:
         try:
             speaker_profile = request.user.speaker_profile
@@ -97,7 +97,7 @@ def proposal_submit_kind(request, kind_slug):
     else:
         form = form_class()
 
-    return render(request, "symposion/proposals/proposal_submit_kind.html", {
+    return render(request, "proposals/proposal_submit_kind.html", {
         "kind": kind,
         "proposal_form": form,
     })
@@ -278,7 +278,7 @@ def proposal_detail(request, pk):
     else:
         message_form = None
 
-    return render(request, "symposion/proposals/proposal_detail.html", {
+    return render(request, "proposals/proposal_detail.html", {
         "proposal": proposal,
         "message_form": message_form
     })
@@ -300,7 +300,7 @@ def proposal_cancel(request, pk):
         messages.success(request, "%s has been cancelled" % proposal.title)
         return redirect("dashboard")
 
-    return render(request, "symposion/proposals/proposal_cancel.html", {
+    return render(request, "proposals/proposal_cancel.html", {
         "proposal": proposal,
     })
 
@@ -323,7 +323,7 @@ def proposal_leave(request, pk):
     ctx = {
         "proposal": proposal,
     }
-    return render(request, "symposion/proposals/proposal_leave.html", ctx)
+    return render(request, "proposals/proposal_leave.html", ctx)
 
 
 @login_required
