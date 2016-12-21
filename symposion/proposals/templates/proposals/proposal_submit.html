@@ -13,6 +13,20 @@
 
 {% block content %}
 
+    {% if kinds %}
+        {% with kind=kinds|first%}
+            {{ kind.name }}
+            <form name="sform" method="post" action="{% url 'proposal_cancel' kind.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="pk">
+            </form>
+            <a href="javascript:SubmitForm({{ kind.pk }})">Cancel</a>
+        {% endwith %}
+    {% endif %}
+
+    {% comment %}
+    Proposal List with detail view possibility and cancel possibility
+
     <h3>Proposal Submit</h3>
 
     {% if kinds %}
@@ -20,9 +34,6 @@
             <br>
             <a href="{% url 'proposal_detail' kind.pk %}">{{ kind.name }}</a>
 
-            {% comment %}
-            hidden form for post request in link
-            {% endcomment %}
             <form name="sform" method="post" action="{% url 'proposal_cancel' kind.pk %}">
                 <input type="hidden" name="pk">
             </form>
@@ -31,5 +42,7 @@
             <a href="{% url 'proposal_cancel' kind.pk %}">Cancel Get</a>
         {% endfor %}
     {% endif %}
+
+    {% endcomment %}
 
 {% endblock %}
